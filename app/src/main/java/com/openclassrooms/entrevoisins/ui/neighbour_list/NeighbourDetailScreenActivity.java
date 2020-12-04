@@ -5,23 +5,20 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
-import com.openclassrooms.entrevoisins.events.AddFavoriteEvent;
+import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class NeighbourDetailScreenActivity extends AppCompatActivity{
 
@@ -41,7 +38,10 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
     @BindView(R.id.activity_detail_favorite_btn)
     FloatingActionButton mFloatingActionButton;
 
-    private Button mAddFavoriteButton;
+    private NeighbourApiService mApiService;
+
+
+
 
 
     @Override
@@ -60,23 +60,26 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
         Glide.with(this)
                 .load(neighbour.getAvatarUrl())
                 .into(mNeighbourAvatar);
+        mApiService = DI.getNeighbourApiService();
 
 
-        this.configureToolbar();
+
+        //this.configureToolbar();
 
 
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EventBus.getDefault().post(new AddFavoriteEvent(neighbour));
+
+                mApiService.createFavorite(neighbour);
+
             }
         });
 
     }
-
     private void configureToolbar(){
         ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
+       ab.setDisplayHomeAsUpEnabled(true);
 
     }
 
