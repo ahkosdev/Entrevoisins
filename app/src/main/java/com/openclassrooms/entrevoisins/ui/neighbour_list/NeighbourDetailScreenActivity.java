@@ -19,6 +19,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class NeighbourDetailScreenActivity extends AppCompatActivity{
 
@@ -37,6 +38,8 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
     @BindView(R.id.activity_detail_aboutMy_test) TextView mAboutMyText;
     @BindView(R.id.activity_detail_favorite_btn)
     FloatingActionButton mFloatingActionButton;
+    @BindView(R.id.neighbour_detail_avatar_name_txt) TextView mAvatarName;
+    @BindView(R.id.neighbour_detail_buttonUp_img) ImageView mButtonUp;
 
     private NeighbourApiService mApiService;
 
@@ -53,6 +56,7 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
         Intent intent = getIntent();
         Neighbour neighbour = (Neighbour)intent.getSerializableExtra("KEY_NEIGHBOUR");
         mNeighbourName.setText(neighbour.getName());
+        mAvatarName.setText(neighbour.getName());
         mNeighbourAddress.setText(neighbour.getAddress());
         mNeighbourPhoneNumber.setText(neighbour.getPhoneNumber());
         mNeighbourFacebook.setText("www.facebook.fr/" + neighbour.getName());
@@ -64,7 +68,7 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
 
 
 
-        //this.configureToolbar();
+
 
 
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -76,10 +80,14 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
             }
         });
 
-    }
-    private void configureToolbar(){
-        ActionBar ab = getSupportActionBar();
-       ab.setDisplayHomeAsUpEnabled(true);
+        mButtonUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
 
     }
 

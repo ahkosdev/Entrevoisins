@@ -42,6 +42,10 @@ public class Neighbour implements Serializable {
         this.aboutMe = aboutMe;
     }
 
+    public Neighbour() {
+
+    }
+
 
     public long getId() {
         return id;

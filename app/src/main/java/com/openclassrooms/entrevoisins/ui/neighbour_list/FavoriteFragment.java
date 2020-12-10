@@ -31,7 +31,7 @@ import java.util.List;
 public class FavoriteFragment extends Fragment {
 
     private NeighbourApiService mApiService;
-    private List<Neighbour> mNeighbours;
+    private List<Neighbour> mFavorite;
     private RecyclerView mRecyclerView;
 
 
@@ -59,22 +59,20 @@ public class FavoriteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View favoriteView = inflater.inflate(R.layout.fragment_favorite, container, false);
-        ImageView favoriteAvatar = (ImageView) favoriteView.findViewById(R.id.favorite_item_list_avatar) ;
-        TextView favoriteName = (TextView) favoriteView.findViewById(R.id.favorite_item_list_name) ;
+        View view = inflater.inflate(R.layout.fragment_neighbour_list, container, false);
 
-        Context context = favoriteView.getContext();
-        mRecyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_neighbour_list, container, false);
+        Context context = view.getContext();
+        mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
-        return favoriteView;
+        return view;
 
     }
 
     private void initList() {
-        mNeighbours = mApiService.getNeighbours();
-        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+        mFavorite = mApiService.getFavorite();
+        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mFavorite));
     }
 
 
