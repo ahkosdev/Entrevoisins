@@ -165,7 +165,7 @@
             android:paddingTop="10dp"
             android:background="#ffffff"
             android:gravity="bottom"
-            android:text="A propos de moi"
+            android:text="@string/aboutMe"
             android:textSize="25sp"
             android:textColor="#000000"
             />

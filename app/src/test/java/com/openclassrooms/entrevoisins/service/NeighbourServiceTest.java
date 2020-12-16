@@ -46,7 +46,7 @@ public class NeighbourServiceTest {
 
     @Test
     public void createNeighbourWithSuccess() {
-        Neighbour neighbourToCreate = service.getNeighbours().get(0);
+        Neighbour neighbourToCreate = new Neighbour();
         service.createNeighbour(neighbourToCreate);
         assertTrue(service.getNeighbours().contains(neighbourToCreate));
     }
@@ -54,7 +54,7 @@ public class NeighbourServiceTest {
     @Test
     public void getFavoriteWithSuccess() {
         List<Neighbour> expectedFavorite = new ArrayList<>();
-        assertEquals(expectedFavorite, service.getFavorite());
+        assertEquals( expectedFavorite,service.getFavorite());
 
     }
 

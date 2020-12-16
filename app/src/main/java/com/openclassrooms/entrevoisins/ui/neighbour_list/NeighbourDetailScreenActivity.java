@@ -75,10 +75,15 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
 
-                mApiService.createFavorite(neighbour);
+                if (mApiService.getFavorite().contains(neighbour) ) {
+                    //mApiService.deleteDoubleFavorite(null);
+                    mApiService.getFavorite().size();
+                }else
 
+                mApiService.createFavorite(neighbour);
             }
         });
+
 
         mButtonUp.setOnClickListener(new View.OnClickListener() {
             @Override
