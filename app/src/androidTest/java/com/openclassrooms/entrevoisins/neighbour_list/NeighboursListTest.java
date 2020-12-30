@@ -1,6 +1,7 @@
 
 package com.openclassrooms.entrevoisins.neighbour_list;
 
+import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.espresso.contrib.RecyclerViewActions;
@@ -20,10 +21,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
@@ -78,7 +82,20 @@ public class NeighboursListTest {
 
     @Test
     public void myNeighboursList_itemsOnclickAction_startDetailActivity() {
-        onView(Matchers.allOf(withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
-        onView(Matchers.allOf(withId(R.id.activity_detail_aboutMy_tittle), isDisplayed())).check(matches(withText(R.string.aboutMe)));
+        onView(Matchers.allOf(withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        onView(Matchers.allOf(withId(R.id.activity_detail_aboutMe_title), isDisplayed())).check(matches(withText(R.string.aboutMe)));
+        onView(Matchers.allOf(withId(R.id.activity_detail_name_txt), isDisplayed())).check(matches(withText("Caroline")));
     }
+
+    @Test
+    public void myFavoriteTab_contains_onlyAddFavorites() {
+        onView(Matchers.allOf(withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
+        onView(Matchers.allOf(withId(R.id.activity_detail_favorite_btn), isDisplayed())).perform(( click()));
+        onView(Matchers.allOf(withId(R.id.neighbour_detail_buttonUp_img), isDisplayed())).perform(click());
+        //onView(Matchers.allOf(withId(R.id.tabs), isDisplayed())).perform(click());
+        onView(Matchers.allOf(withId(R.id.main_content), isDisplayed())).perform(swipeLeft());
+        onView(Matchers.allOf(withId(R.id.item_list_name),isDisplayed())).check(matches(withText("Jack")));
+
+    }
+
     }

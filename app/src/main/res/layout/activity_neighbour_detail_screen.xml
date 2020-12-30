@@ -49,10 +49,12 @@
             android:layout_alignBottom="@id/activity_detail_avatar_img"
             />
 
+
+
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/activity_detail_name_test"
+        android:id="@+id/activity_detail_name_txt"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
@@ -81,7 +83,7 @@
             android:layout_marginTop="10dp"/>
 
     <TextView
-        android:id="@+id/activity_detail_address_test"
+        android:id="@+id/activity_detail_address_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -111,7 +113,7 @@
 
 
     <TextView
-        android:id="@+id/activity_detail_phone_test"
+        android:id="@+id/activity_detail_phone_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -140,7 +142,7 @@
 
 
     <TextView
-        android:id="@+id/activity_detail_facebook_test"
+        android:id="@+id/activity_detail_facebook_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -153,7 +155,7 @@
 
 
         <TextView
-            android:id="@+id/activity_detail_aboutMy_tittle"
+            android:id="@+id/activity_detail_aboutMe_title"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
@@ -171,7 +173,7 @@
             />
 
     <TextView
-        android:id="@+id/activity_detail_aboutMy_test"
+        android:id="@+id/activity_detail_aboutMe_txt"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -186,7 +188,6 @@
         android:textSize="12sp"
 
         />
-
 
 
 </LinearLayout>
@@ -204,6 +205,8 @@
         app:layout_anchor="@id/activity_detail_avatar_img"
         app:layout_anchorGravity="bottom|right|end"
         />
+
+
 </android.support.design.widget.CoordinatorLayout>
 
 

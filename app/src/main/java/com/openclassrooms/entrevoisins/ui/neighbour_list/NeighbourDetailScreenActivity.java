@@ -26,16 +26,16 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
 
     @BindView(R.id.activity_detail_avatar_img)
     ImageView mNeighbourAvatar;
-    @BindView(R.id.activity_detail_name_test)
+    @BindView(R.id.activity_detail_name_txt)
     TextView mNeighbourName;
-    @BindView(R.id.activity_detail_address_test)
+    @BindView(R.id.activity_detail_address_txt)
     TextView mNeighbourAddress;
-    @BindView(R.id.activity_detail_phone_test)
+    @BindView(R.id.activity_detail_phone_txt)
     TextView mNeighbourPhoneNumber;
-    @BindView(R.id.activity_detail_facebook_test)
+    @BindView(R.id.activity_detail_facebook_txt)
     TextView mNeighbourFacebook;
-    @BindView(R.id.activity_detail_aboutMy_tittle) TextView mAboutMyTittle;
-    @BindView(R.id.activity_detail_aboutMy_test) TextView mAboutMyText;
+    @BindView(R.id.activity_detail_aboutMe_title) TextView mAboutMeTitle;
+    @BindView(R.id.activity_detail_aboutMe_txt) TextView mAboutMeText;
     @BindView(R.id.activity_detail_favorite_btn)
     FloatingActionButton mFloatingActionButton;
     @BindView(R.id.neighbour_detail_avatar_name_txt) TextView mAvatarName;
@@ -60,7 +60,7 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
         mNeighbourAddress.setText(neighbour.getAddress());
         mNeighbourPhoneNumber.setText(neighbour.getPhoneNumber());
         mNeighbourFacebook.setText("www.facebook.fr/" + neighbour.getName());
-        mAboutMyText.setText(neighbour.getAboutMe());
+        mAboutMeText.setText(neighbour.getAboutMe());
         Glide.with(this)
                 .load(neighbour.getAvatarUrl())
                 .into(mNeighbourAvatar);
@@ -75,14 +75,14 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
 
-                if (mApiService.getFavorite().contains(neighbour) ) {
-                    //mApiService.deleteDoubleFavorite(null);
-                    mApiService.getFavorite().size();
-                }else
+                if (!mApiService.getFavorite().contains(neighbour)) {
 
-                mApiService.createFavorite(neighbour);
+
+                    mApiService.createFavorite(neighbour);
+                }
             }
         });
+
 
 
         mButtonUp.setOnClickListener(new View.OnClickListener() {
