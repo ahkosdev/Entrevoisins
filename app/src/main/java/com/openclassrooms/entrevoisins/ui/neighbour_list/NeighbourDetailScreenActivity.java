@@ -1,10 +1,9 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,11 +14,8 @@ import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
-import org.greenrobot.eventbus.EventBus;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class NeighbourDetailScreenActivity extends AppCompatActivity{
 
@@ -66,17 +62,11 @@ public class NeighbourDetailScreenActivity extends AppCompatActivity{
                 .into(mNeighbourAvatar);
         mApiService = DI.getNeighbourApiService();
 
-
-
-
-
-
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if (!mApiService.getFavorite().contains(neighbour)) {
-
 
                     mApiService.createFavorite(neighbour);
                 }
