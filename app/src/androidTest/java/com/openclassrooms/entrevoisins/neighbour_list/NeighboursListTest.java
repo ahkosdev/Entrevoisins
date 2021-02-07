@@ -94,10 +94,8 @@ public class NeighboursListTest {
         onView(Matchers.allOf(withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
         onView(Matchers.allOf(withId(R.id.activity_detail_favorite_btn), isDisplayed())).perform(( click()));
         Espresso.pressBack();
-        //onView(Matchers.allOf(withId(R.id.neighbour_detail_buttonUp_img), isDisplayed())).perform(click());
         onView(Matchers.allOf(withId(R.id.list_neighbours), isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         onView(Matchers.allOf(withId(R.id.activity_detail_favorite_btn), isDisplayed())).perform(( click()));
-        //onView(Matchers.allOf(withId(R.id.neighbour_detail_buttonUp_img), isDisplayed())).perform(click());
         Espresso.pressBack();
         onView(Matchers.allOf(withId(R.id.main_content), isDisplayed())).perform(swipeLeft());
         onView(Matchers.allOf(withId(R.id.item_list_name),
